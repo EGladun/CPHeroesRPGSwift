@@ -21,10 +21,22 @@ class Hero {
     var crit = 3
     var minDmg = 1
     var maxDmg = 5
+    var gold = 0
+    var lvlCounter = 1
     //Base init
     init(name: String, heroClass: String) {
         self.name = name
         self.heroClass = heroClass
+        switch heroClass {
+        case "crusader":
+            self.protection += 20
+        case "leaper":
+            self.dodge += 10
+        case "plagueDoctor":
+            self.accurancy += 20
+        default:
+            print("here")
+        }
     }
     //Init for waking up from DB
     init(hero: HeroModel) {
@@ -39,7 +51,35 @@ class Hero {
         self.crit = hero.crit
         self.minDmg = hero.minDmg
         self.maxDmg = hero.maxDmg
+        self.gold = hero.gold
         
+    }
+    
+    func lvlUp() {
+        self.maxHP += 5
+        self.protection += 5
+        self.minDmg += 3
+        self.maxDmg += 3
+        self.crit += 2
+        self.speed += 1
+        self.accurancy += 3
+        self.dodge += 3
+        
+        switch self.heroClass {
+        case "crusader":
+            self.protection += 5
+            self.maxDmg += 3
+        case "leaper":
+            self.dodge += 5
+            self.speed += 1
+        case "plagueDoctor":
+            self.accurancy += 3
+            self.crit += 3
+        default:
+            break
+        }
+        
+        self.lvlCounter += 1
     }
     
     

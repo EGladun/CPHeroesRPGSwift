@@ -58,7 +58,10 @@ class NewHeroViewController: UIViewController {
             currentHero.speed = newHero.speed
             currentHero.crit = newHero.crit
             currentHero.minDmg = newHero.minDmg
+            currentHero.maxDmg = newHero.maxDmg
             currentHero.maxHP = newHero.maxHP
+            currentHero.gold = newHero.gold
+            currentHero.lvlCounter = newHero.lvlCounter
             
             try! realm.write {
                 realm.add(currentHero)

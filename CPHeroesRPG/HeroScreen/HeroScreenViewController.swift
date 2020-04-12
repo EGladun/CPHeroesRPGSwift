@@ -18,17 +18,21 @@ class HeroScreenViewController: UIViewController {
     @IBOutlet var critLabel: UILabel!
     @IBOutlet var damageLabel: UILabel!
     @IBOutlet var heroPortrait: UIImageView!
+    @IBOutlet var goldLabel: UILabel!
+    @IBOutlet var lvlUpButton: UIButton!
     
     var hero: Hero?
+    let lvlUpCost = 10
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = self.hero?.name
         self.configLabels()
+        
         
     }
     
     func configLabels(){
+        self.title = self.hero!.name + " lvl." + String(self.hero!.lvlCounter)
         self.classLabel.text = "Class: " + self.hero!.heroClass
         self.maxHPLabel.text = "Max HP: " + String(self.hero!.maxHP)
         self.dodgeLabel.text = "Dodge: " + String(self.hero!.dodge)
@@ -37,6 +41,7 @@ class HeroScreenViewController: UIViewController {
         self.speedLabel.text = "Speed: " + String(self.hero!.speed)
         self.critLabel.text = "Crit: " + String(self.hero!.crit) + "%"
         self.damageLabel.text = "Damage: " + String(self.hero!.minDmg) + " - " + String(self.hero!.maxDmg)
+        self.goldLabel.text = "Gold: " + String(self.hero!.gold)
         switch self.hero!.heroClass {
         case "crusader":
             self.heroPortrait.image = UIImage(named: "crusader")
@@ -47,7 +52,23 @@ class HeroScreenViewController: UIViewController {
         default:
             print("hmm")
         }
+        if self.hero!.gold < (self.lvlUpCost * self.hero!.lvlCounter) {
+            self.lvlUpButton.isHidden = true
+        } else {
+            self.lvlUpButton.isHidden = false
+        }
     }
 
-
+    @IBAction func levelUp(_ sender: Any) {
+        if self.hero!.gold >= (self.lvlUpCost * self.hero!.lvlCounter) {
+            self.hero!.gold -= self.lvlUpCost * self.hero!.lvlCounter
+            self.hero!.lvlUp()
+            self.configLabels()
+        }
+    }
+    
+    @IBAction func plusGold(_ sender: Any) {
+        self.hero!.gold += 100
+        self.configLabels()
+    }
 }

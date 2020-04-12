@@ -21,4 +21,6 @@ class HeroModel: Object {
     @objc dynamic var crit: Int = 0
     @objc dynamic var minDmg: Int = 0
     @objc dynamic var maxDmg: Int = 0
+    @objc dynamic var gold: Int = 0
+    @objc dynamic var lvlCounter: Int = 0
 }
