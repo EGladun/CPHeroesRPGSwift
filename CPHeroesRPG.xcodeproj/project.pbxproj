@@ -16,6 +16,8 @@
 		FA8204B9242DF3F500811F69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8204B8242DF3F500811F69 /* AppDelegate.swift */; };
 		FA8204C0242DF3F600811F69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA8204BF242DF3F600811F69 /* Assets.xcassets */; };
 		FA8204C3242DF3F600811F69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA8204C1242DF3F600811F69 /* LaunchScreen.storyboard */; };
+		FA9AE85B244C5BC50091A8DA /* EnemyClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9AE85A244C5BC50091A8DA /* EnemyClass.swift */; };
+		FA9AE85D244C5BDA0091A8DA /* ArchEnemyClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9AE85C244C5BDA0091A8DA /* ArchEnemyClass.swift */; };
 		FADA45C524323175009B338B /* HeroClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADA45C424323175009B338B /* HeroClass.swift */; };
 		FADA45C7243234CD009B338B /* HeroModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADA45C6243234CD009B338B /* HeroModel.swift */; };
 		FADA45C9243236CA009B338B /* MainMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADA45C8243236CA009B338B /* MainMenuController.swift */; };
@@ -40,6 +42,8 @@
 		FA8204BF242DF3F600811F69 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA8204C2242DF3F600811F69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA8204C4242DF3F600811F69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA9AE85A244C5BC50091A8DA /* EnemyClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyClass.swift; sourceTree = "<group>"; };
+		FA9AE85C244C5BDA0091A8DA /* ArchEnemyClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchEnemyClass.swift; sourceTree = "<group>"; };
 		FADA45C424323175009B338B /* HeroClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroClass.swift; sourceTree = "<group>"; };
 		FADA45C6243234CD009B338B /* HeroModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroModel.swift; sourceTree = "<group>"; };
 		FADA45C8243236CA009B338B /* MainMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuController.swift; sourceTree = "<group>"; };
@@ -165,6 +169,8 @@
 				FADA45C424323175009B338B /* HeroClass.swift */,
 				FADA45C6243234CD009B338B /* HeroModel.swift */,
 				FA786BD724405D5600B8B5CD /* PublicUtil.swift */,
+				FA9AE85A244C5BC50091A8DA /* EnemyClass.swift */,
+				FA9AE85C244C5BDA0091A8DA /* ArchEnemyClass.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -295,8 +301,10 @@
 				FADA45D024323C25009B338B /* HeroTableViewCell.swift in Sources */,
 				FA8204B9242DF3F500811F69 /* AppDelegate.swift in Sources */,
 				FADA45C7243234CD009B338B /* HeroModel.swift in Sources */,
+				FA9AE85B244C5BC50091A8DA /* EnemyClass.swift in Sources */,
 				FADA45C9243236CA009B338B /* MainMenuController.swift in Sources */,
 				FA4E40AB24407CE300B398D1 /* HeroScreenViewController.swift in Sources */,
+				FA9AE85D244C5BDA0091A8DA /* ArchEnemyClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,6 +12,7 @@ class Hero {
     
     var name = ""
     var heroClass: String = "crusader"
+    var id: Int
     
     var maxHP = 10
     var dodge = 0
@@ -24,7 +25,8 @@ class Hero {
     var gold = 0
     var lvlCounter = 1
     //Base init
-    init(name: String, heroClass: String) {
+    init(name: String, heroClass: String, lastId: Int) {
+        self.id = lastId
         self.name = name
         self.heroClass = heroClass
         switch heroClass {
@@ -41,6 +43,7 @@ class Hero {
     //Init for waking up from DB
     init(hero: HeroModel) {
         
+        self.id = hero.id
         self.name = hero.name
         self.heroClass = hero.heroClass
         self.dodge = hero.dodge

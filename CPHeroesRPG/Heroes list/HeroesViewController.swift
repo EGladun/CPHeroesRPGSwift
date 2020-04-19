@@ -43,7 +43,9 @@ class HeroesViewController: UIViewController {
     
     // MARK: - METHODS FOR SELECTORS
     @objc func newHero() {
+        let lastId = self.heroesArray.count
         let nextVC = NewHeroViewController()
+        nextVC.lastId = lastId
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     

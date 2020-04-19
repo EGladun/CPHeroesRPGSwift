@@ -11,6 +11,7 @@ import RealmSwift
 
 class HeroModel: Object {
     
+    @objc dynamic var id: Int = 0
     @objc dynamic var name: String = ""
     @objc dynamic var heroClass: String = ""
     @objc dynamic var maxHP: Int = 0

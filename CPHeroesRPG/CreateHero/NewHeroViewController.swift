@@ -17,6 +17,7 @@ class NewHeroViewController: UIViewController {
     
     var choosedClass: String = "crusader"
     let realm = try! Realm()
+    var lastId: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,9 +47,10 @@ class NewHeroViewController: UIViewController {
     
     @IBAction func saveHero(_ sender: Any) {
         if self.nameField.text != "" {
-            let newHero = Hero(name: self.nameField.text!, heroClass: self.choosedClass)
+            let newHero = Hero(name: self.nameField.text!, heroClass: self.choosedClass, lastId: self.lastId)
             
             let currentHero = HeroModel()
+            currentHero.id = newHero.id
             currentHero.name = newHero.name
             currentHero.heroClass = newHero.heroClass
             currentHero.maxHP = newHero.maxHP

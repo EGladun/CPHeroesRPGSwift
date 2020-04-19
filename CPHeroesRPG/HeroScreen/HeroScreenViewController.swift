@@ -23,11 +23,16 @@ class HeroScreenViewController: UIViewController {
     
     var hero: Hero?
     let lvlUpCost = 10
+    var enemyArray: [Enemy] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configLabels()
         
+        for _ in 1...10 {
+            let newEnemy = Enemy(heroLevel: self.hero!.lvlCounter)
+            self.enemyArray.append(newEnemy)
+        }
         
     }
     
