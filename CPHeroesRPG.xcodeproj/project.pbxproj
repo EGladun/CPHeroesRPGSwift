@@ -26,6 +26,8 @@
 		FADA45D024323C25009B338B /* HeroTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADA45CE24323C25009B338B /* HeroTableViewCell.swift */; };
 		FADA45D124323C25009B338B /* HeroTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FADA45CF24323C25009B338B /* HeroTableViewCell.xib */; };
 		FADA45D324323E87009B338B /* HeroesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADA45D224323E87009B338B /* HeroesViewController.swift */; };
+		FAFB28E5244C86AE00CCD0E2 /* BattleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFB28E3244C86AE00CCD0E2 /* BattleViewController.swift */; };
+		FAFB28E6244C86AE00CCD0E2 /* BattleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAFB28E4244C86AE00CCD0E2 /* BattleViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,8 @@
 		FADA45CE24323C25009B338B /* HeroTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroTableViewCell.swift; sourceTree = "<group>"; };
 		FADA45CF24323C25009B338B /* HeroTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeroTableViewCell.xib; sourceTree = "<group>"; };
 		FADA45D224323E87009B338B /* HeroesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroesViewController.swift; sourceTree = "<group>"; };
+		FAFB28E3244C86AE00CCD0E2 /* BattleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleViewController.swift; sourceTree = "<group>"; };
+		FAFB28E4244C86AE00CCD0E2 /* BattleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BattleViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +160,7 @@
 				FA786BCF244056EE00B8B5CD /* main menu */,
 				FA786BD22440573F00B8B5CD /* CreateHero */,
 				FA4E40A824407CC500B398D1 /* HeroScreen */,
+				FAFB28E2244C868400CCD0E2 /* BattleView */,
 				FA8204BF242DF3F600811F69 /* Assets.xcassets */,
 				FA8204C1242DF3F600811F69 /* LaunchScreen.storyboard */,
 				FA8204C4242DF3F600811F69 /* Info.plist */,
@@ -173,6 +178,15 @@
 				FA9AE85C244C5BDA0091A8DA /* ArchEnemyClass.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		FAFB28E2244C868400CCD0E2 /* BattleView */ = {
+			isa = PBXGroup;
+			children = (
+				FAFB28E3244C86AE00CCD0E2 /* BattleViewController.swift */,
+				FAFB28E4244C86AE00CCD0E2 /* BattleViewController.xib */,
+			);
+			path = BattleView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,6 +253,7 @@
 				FA8204C3242DF3F600811F69 /* LaunchScreen.storyboard in Resources */,
 				FADA45D124323C25009B338B /* HeroTableViewCell.xib in Resources */,
 				FA786BD62440577C00B8B5CD /* NewHeroViewController.xib in Resources */,
+				FAFB28E6244C86AE00CCD0E2 /* BattleViewController.xib in Resources */,
 				FA8204C0242DF3F600811F69 /* Assets.xcassets in Resources */,
 				FADA45CB2432375C009B338B /* MainMenu.xib in Resources */,
 				FA4E40AC24407CE300B398D1 /* HeroScreenViewController.xib in Resources */,
@@ -294,6 +309,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAFB28E5244C86AE00CCD0E2 /* BattleViewController.swift in Sources */,
 				FA786BD824405D5600B8B5CD /* PublicUtil.swift in Sources */,
 				FA786BD52440577C00B8B5CD /* NewHeroViewController.swift in Sources */,
 				FADA45D324323E87009B338B /* HeroesViewController.swift in Sources */,

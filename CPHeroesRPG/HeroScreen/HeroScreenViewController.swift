@@ -24,16 +24,22 @@ class HeroScreenViewController: UIViewController {
     var hero: Hero?
     let lvlUpCost = 10
     var enemyArray: [Enemy] = []
+    var boss: ArchEnemy = ArchEnemy(heroLevel: 1)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configLabels()
+        self.createEnemies()
         
-        for _ in 1...10 {
+        
+    }
+    
+    func createEnemies(){
+        for _ in 1...9 {
             let newEnemy = Enemy(heroLevel: self.hero!.lvlCounter)
             self.enemyArray.append(newEnemy)
         }
-        
+        boss = ArchEnemy(heroLevel: self.hero!.lvlCounter)
     }
     
     func configLabels(){
@@ -75,5 +81,12 @@ class HeroScreenViewController: UIViewController {
     @IBAction func plusGold(_ sender: Any) {
         self.hero!.gold += 100
         self.configLabels()
+    }
+    
+    @IBAction func toBattle(_ sender: Any) {
+        let nextVC = BattleViewController()
+        nextVC.enemies = self.enemyArray
+        nextVC.boss = self.boss
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }

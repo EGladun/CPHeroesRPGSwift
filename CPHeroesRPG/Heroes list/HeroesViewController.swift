@@ -25,7 +25,6 @@ class HeroesViewController: UIViewController {
         self.configNavBar()
         
         self.tableView.reloadData()
-        
     }
     
     func configTableView() {
@@ -77,6 +76,4 @@ extension HeroesViewController: UITableViewDelegate, UITableViewDataSource {
         nextVC.hero = hero
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
-    
-    
 }
