@@ -12,6 +12,7 @@ class BattleViewController: UIViewController {
     
     var enemies: [Enemy] = []
     var boss: ArchEnemy = ArchEnemy(heroLevel: 1)
+    var hero: Hero?
 
     override func viewDidLoad() {
         super.viewDidLoad()

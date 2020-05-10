@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class HeroScreenViewController: UIViewController {
     @IBOutlet var classLabel: UILabel!
@@ -25,12 +26,15 @@ class HeroScreenViewController: UIViewController {
     let lvlUpCost = 10
     var enemyArray: [Enemy] = []
     var boss: ArchEnemy = ArchEnemy(heroLevel: 1)
+    let realm = try! Realm()
+    var heroes: Results<HeroModel>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configLabels()
         self.createEnemies()
-        
+        self.navigationItem.setHidesBackButton(true, animated: true)
+        self.heroes = realm.objects(HeroModel.self)
         
     }
     
@@ -87,6 +91,36 @@ class HeroScreenViewController: UIViewController {
         let nextVC = BattleViewController()
         nextVC.enemies = self.enemyArray
         nextVC.boss = self.boss
+        nextVC.hero = self.hero
         self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    @IBAction func saveAndExit(_ sender: Any) {
+        
+        let currentHero = HeroModel()
+        currentHero.id = self.hero!.id
+        currentHero.name = self.hero!.name
+        currentHero.heroClass = self.hero!.heroClass
+        currentHero.maxHP = self.hero!.maxHP
+        currentHero.dodge = self.hero!.dodge
+        currentHero.accurancy = self.hero!.accurancy
+        currentHero.protection = self.hero!.protection
+        currentHero.speed = self.hero!.speed
+        currentHero.crit = self.hero!.crit
+        currentHero.minDmg = self.hero!.minDmg
+        currentHero.maxDmg = self.hero!.maxDmg
+        currentHero.maxHP = self.hero!.maxHP
+        currentHero.gold = self.hero!.gold
+        currentHero.lvlCounter = self.hero!.lvlCounter
+        
+        try! realm.write {
+            for hero in heroes{
+                if hero.id == currentHero.id{
+                    realm.delete(hero)
+                    realm.add(currentHero)
+                }
+            }
+        }
+        
+        self.navigationController?.popToRootViewController(animated: true)
     }
 }

@@ -72,6 +72,7 @@ class NewHeroViewController: UIViewController {
             
             self.navigationController?.popViewController(animated: true)
             
+            
         } else {
             let alert = UIAlertController(title: "Error", message: "Enter hero's name", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
