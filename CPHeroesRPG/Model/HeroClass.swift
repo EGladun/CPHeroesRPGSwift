@@ -55,6 +55,7 @@ class Hero {
         self.minDmg = hero.minDmg
         self.maxDmg = hero.maxDmg
         self.gold = hero.gold
+        self.lvlCounter = hero.lvlCounter
         
     }
     
