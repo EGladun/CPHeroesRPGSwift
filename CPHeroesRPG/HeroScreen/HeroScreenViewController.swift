@@ -121,6 +121,6 @@ class HeroScreenViewController: UIViewController {
             }
         }
         
-        self.navigationController?.popToRootViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
 }

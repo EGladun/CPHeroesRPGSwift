@@ -21,9 +21,15 @@ class HeroesViewController: UIViewController {
         super.viewDidLoad()
         
         self.title = "Choose your hero"
+//        self.configTableView()
+//        self.configNavBar()
+//
+//        self.tableView.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         self.configTableView()
         self.configNavBar()
-        
         self.tableView.reloadData()
     }
     
