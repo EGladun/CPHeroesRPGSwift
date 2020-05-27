@@ -49,6 +49,17 @@ class HeroesViewController: UIViewController {
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
+    func deleteHero(alert: UIAlertAction!,identifier: Int) {
+        try! realm.write {
+            for hero in heroesArray{
+                if hero.id == heroesArray[identifier].id{
+                    realm.delete(hero)
+                    break
+                }
+            }
+        }
+        self.tableView.reloadData()
+    }
     
 }
 
@@ -80,16 +91,13 @@ extension HeroesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            print(indexPath.row)
-            try! realm.write {
-                for hero in heroesArray{
-                    if hero.id == heroesArray[indexPath.row].id{
-                        realm.delete(hero)
-                        break
-                    }
-                }
-            }
-            self.tableView.reloadData()
+            //Alert before deleting
+            let alert = UIAlertController(title: "Delete hero", message: "Are you sure?", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { (action) in
+                self.deleteHero(alert: action, identifier: indexPath.row)
+            }))
+            alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
     }
     
