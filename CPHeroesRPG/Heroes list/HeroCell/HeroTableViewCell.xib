@@ -17,7 +17,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ipi-Jl-stR">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ipi-Jl-stR">
                         <rect key="frame" x="69" y="11" width="100" height="21.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="100" id="O5S-T4-P7F"/>
@@ -33,11 +33,17 @@
                             <constraint firstAttribute="width" constant="45" id="zoY-hg-6eA"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Class" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tDD-Pq-R2A">
-                        <rect key="frame" x="192" y="11" width="100" height="21.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Class" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tDD-Pq-R2A">
+                        <rect key="frame" x="169" y="11" width="100" height="21.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="100" id="Kb0-6H-aaP"/>
                         </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lvl" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f0j-QN-RbC">
+                        <rect key="frame" x="277" y="11" width="21" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -46,18 +52,21 @@
                 <constraints>
                     <constraint firstItem="Wox-94-Yje" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="60Q-9V-yxs"/>
                     <constraint firstItem="Ipi-Jl-stR" firstAttribute="leading" secondItem="Wox-94-Yje" secondAttribute="trailing" constant="8" id="D2Y-ez-ogm"/>
+                    <constraint firstItem="f0j-QN-RbC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="Nfi-Mc-gg3"/>
                     <constraint firstAttribute="bottom" secondItem="tDD-Pq-R2A" secondAttribute="bottom" constant="11.5" id="VVu-8L-LOe"/>
                     <constraint firstItem="Ipi-Jl-stR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="dpD-7X-VFm"/>
-                    <constraint firstItem="tDD-Pq-R2A" firstAttribute="leading" secondItem="Ipi-Jl-stR" secondAttribute="trailing" constant="23" id="kSY-c4-Gsf"/>
+                    <constraint firstItem="tDD-Pq-R2A" firstAttribute="leading" secondItem="Ipi-Jl-stR" secondAttribute="trailing" id="kSY-c4-Gsf"/>
                     <constraint firstAttribute="bottom" secondItem="Ipi-Jl-stR" secondAttribute="bottom" constant="11.5" id="nEP-OZ-sS7"/>
                     <constraint firstItem="Wox-94-Yje" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="rSw-4v-0Sc"/>
                     <constraint firstItem="tDD-Pq-R2A" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="thD-Y5-tQd"/>
+                    <constraint firstItem="f0j-QN-RbC" firstAttribute="leading" secondItem="tDD-Pq-R2A" secondAttribute="trailing" constant="8" id="xpz-cp-Rle"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="classLabel" destination="tDD-Pq-R2A" id="Cte-cV-Fbf"/>
                 <outlet property="heroImage" destination="Wox-94-Yje" id="cfa-JU-fDK"/>
+                <outlet property="lvlLabel" destination="f0j-QN-RbC" id="UE6-SU-CA2"/>
                 <outlet property="nameLabel" destination="Ipi-Jl-stR" id="gn3-r8-SHX"/>
             </connections>
             <point key="canvasLocation" x="31.884057971014496" y="32.8125"/>

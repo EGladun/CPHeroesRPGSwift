@@ -12,6 +12,8 @@ class HeroTableViewCell: UITableViewCell {
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var classLabel: UILabel!
     @IBOutlet var heroImage: UIImageView!
+    @IBOutlet weak var lvlLabel: UILabel!
+    
     
     var thisHero: Hero?
     
@@ -23,6 +25,7 @@ class HeroTableViewCell: UITableViewCell {
         
         self.nameLabel.text = hero.name
         self.classLabel.text = hero.heroClass
+        self.lvlLabel.text = String(hero.lvlCounter)
         switch hero.heroClass{
         case "crusader":
             self.heroImage.image = UIImage(named: "crusader")

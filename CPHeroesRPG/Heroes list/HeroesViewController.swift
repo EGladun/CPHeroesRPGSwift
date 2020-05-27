@@ -19,12 +19,7 @@ class HeroesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.title = "Choose your hero"
-//        self.configTableView()
-//        self.configNavBar()
-//
-//        self.tableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -82,4 +77,20 @@ extension HeroesViewController: UITableViewDelegate, UITableViewDataSource {
         nextVC.hero = hero
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            print(indexPath.row)
+            try! realm.write {
+                for hero in heroesArray{
+                    if hero.id == heroesArray[indexPath.row].id{
+                        realm.delete(hero)
+                        break
+                    }
+                }
+            }
+            self.tableView.reloadData()
+        }
+    }
+    
 }
