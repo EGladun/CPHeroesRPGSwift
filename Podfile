@@ -7,5 +7,7 @@ target 'CPHeroesRPG' do
 
   # Pods for CPHeroesRPG
 	pod 'RealmSwift'
+  pod 'Bond'
+  pod 'ReactiveKit'
 
 end

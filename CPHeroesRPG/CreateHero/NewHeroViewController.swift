@@ -9,6 +9,7 @@
 import UIKit
 import Realm
 import RealmSwift
+import Bond
 
 class NewHeroViewController: UIViewController {
     @IBOutlet var portraitView: UIImageView!
@@ -21,8 +22,14 @@ class NewHeroViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Create new hero"
         self.nameField.delegate = self
+        self.nameField.reactive.text.observeNext { (text) in
+            if text == ""{
+                self.title = "Creating new hero"
+            } else {
+                self.title = "Creating \(text ?? "")..."
+            }
+        }
         self.portraitView.image = UIImage(named: "crusader")
         
         self.classChooser.addTarget(self, action: #selector(self.switchImage), for: .valueChanged)
