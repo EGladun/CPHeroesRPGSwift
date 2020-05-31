@@ -25,7 +25,7 @@ class HeroTableViewCell: UITableViewCell {
         
         self.nameLabel.text = hero.name
         self.classLabel.text = hero.heroClass
-        self.lvlLabel.text = String(hero.lvlCounter)
+        self.lvlLabel.text = String(hero.lvlCounter) + " lvl"
         switch hero.heroClass{
         case "crusader":
             self.heroImage.image = UIImage(named: "crusader")

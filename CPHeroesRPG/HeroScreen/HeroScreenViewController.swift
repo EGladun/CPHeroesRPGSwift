@@ -35,9 +35,13 @@ class HeroScreenViewController: UIViewController {
         super.viewDidLoad()
         self.configLabels()
         self.createEnemies()
-        self.navigationItem.setHidesBackButton(true, animated: true)
+        //self.navigationItem.setHidesBackButton(true, animated: true)
         self.heroes = realm.objects(HeroModel.self)
         
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.saveToRealm()
     }
     
     func createEnemies(){
@@ -48,8 +52,36 @@ class HeroScreenViewController: UIViewController {
         boss = ArchEnemy(heroLevel: self.hero!.lvlCounter)
     }
     
+    func saveToRealm(){
+        let currentHero = HeroModel()
+        currentHero.id = self.hero!.id
+        currentHero.name = self.hero!.name
+        currentHero.heroClass = self.hero!.heroClass
+        currentHero.maxHP = self.hero!.maxHP
+        currentHero.dodge = self.hero!.dodge
+        currentHero.accurancy = self.hero!.accurancy
+        currentHero.protection = self.hero!.protection
+        currentHero.speed = self.hero!.speed
+        currentHero.crit = self.hero!.crit
+        currentHero.minDmg = self.hero!.minDmg
+        currentHero.maxDmg = self.hero!.maxDmg
+        currentHero.maxHP = self.hero!.maxHP
+        currentHero.gold = self.hero!.gold
+        currentHero.lvlCounter = self.hero!.lvlCounter
+        
+        try! realm.write {
+            for hero in heroes{
+                if hero.id == currentHero.id{
+                    realm.delete(hero)
+                    realm.add(currentHero)
+                }
+            }
+        }
+    }
+    
     func configLabels(){
         self.title = self.hero!.name + " lvl." + String(self.hero!.lvlCounter)
+        
         self.classLabel.text = "Class: " + self.hero!.heroClass
         self.maxHPLabel.text = "Max HP: " + String(self.hero!.maxHP)
         self.dodgeLabel.text = "Dodge: " + String(self.hero!.dodge)
@@ -95,34 +127,5 @@ class HeroScreenViewController: UIViewController {
         nextVC.boss = self.boss
         nextVC.hero = self.hero
         self.navigationController?.pushViewController(nextVC, animated: true)
-    }
-    @IBAction func saveAndExit(_ sender: Any) {
-        
-        let currentHero = HeroModel()
-        currentHero.id = self.hero!.id
-        currentHero.name = self.hero!.name
-        currentHero.heroClass = self.hero!.heroClass
-        currentHero.maxHP = self.hero!.maxHP
-        currentHero.dodge = self.hero!.dodge
-        currentHero.accurancy = self.hero!.accurancy
-        currentHero.protection = self.hero!.protection
-        currentHero.speed = self.hero!.speed
-        currentHero.crit = self.hero!.crit
-        currentHero.minDmg = self.hero!.minDmg
-        currentHero.maxDmg = self.hero!.maxDmg
-        currentHero.maxHP = self.hero!.maxHP
-        currentHero.gold = self.hero!.gold
-        currentHero.lvlCounter = self.hero!.lvlCounter
-        
-        try! realm.write {
-            for hero in heroes{
-                if hero.id == currentHero.id{
-                    realm.delete(hero)
-                    realm.add(currentHero)
-                }
-            }
-        }
-        
-        self.navigationController?.popViewController(animated: true)
     }
 }

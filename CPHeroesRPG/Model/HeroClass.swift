@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Bond
 
 class Hero {
     

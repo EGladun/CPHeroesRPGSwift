@@ -13,6 +13,7 @@
                 <outlet property="classChooser" destination="nAh-yn-7m1" id="9Ry-Ut-H6y"/>
                 <outlet property="nameField" destination="1L0-kM-jpk" id="wBP-mp-szI"/>
                 <outlet property="portraitView" destination="LUC-Hq-FVV" id="Kc1-d6-jjm"/>
+                <outlet property="saveHeroBtn" destination="ZNQ-nX-QFP" id="iT8-uA-cmR"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -69,6 +70,9 @@
                     </constraints>
                     <state key="normal" title="Save hero">
                         <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <state key="disabled" title="Enter name">
+                        <color key="titleColor" systemColor="systemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
                         <action selector="saveHero:" destination="-1" eventType="touchUpInside" id="CL8-qh-EKX"/>
