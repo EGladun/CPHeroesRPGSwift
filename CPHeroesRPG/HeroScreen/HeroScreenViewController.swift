@@ -34,6 +34,7 @@ class HeroScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configLabels()
+        self.configObserves()
         self.createEnemies()
         //self.navigationItem.setHidesBackButton(true, animated: true)
         self.heroes = realm.objects(HeroModel.self)
@@ -42,6 +43,16 @@ class HeroScreenViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         self.saveToRealm()
+    }
+    
+    func configObserves(){
+        self.hero!.gold.observeNext { (gold) in
+            if gold < (self.lvlUpCost * self.hero!.lvlCounter) {
+                self.lvlUpButton.isHidden = true
+            } else {
+                self.lvlUpButton.isHidden = false
+            }
+        }
     }
     
     func createEnemies(){
@@ -66,7 +77,7 @@ class HeroScreenViewController: UIViewController {
         currentHero.minDmg = self.hero!.minDmg
         currentHero.maxDmg = self.hero!.maxDmg
         currentHero.maxHP = self.hero!.maxHP
-        currentHero.gold = self.hero!.gold
+        currentHero.gold = self.hero!.gold.value
         currentHero.lvlCounter = self.hero!.lvlCounter
         
         try! realm.write {
@@ -90,7 +101,7 @@ class HeroScreenViewController: UIViewController {
         self.speedLabel.text = "Speed: " + String(self.hero!.speed)
         self.critLabel.text = "Crit: " + String(self.hero!.crit) + "%"
         self.damageLabel.text = "Damage: " + String(self.hero!.minDmg) + " - " + String(self.hero!.maxDmg)
-        self.goldLabel.text = "Gold: " + String(self.hero!.gold)
+        self.goldLabel.text = "Gold: " + String(self.hero!.gold.value)
         switch self.hero!.heroClass {
         case "crusader":
             self.heroPortrait.image = UIImage(named: "crusader")
@@ -101,23 +112,18 @@ class HeroScreenViewController: UIViewController {
         default:
             print("hmm")
         }
-        if self.hero!.gold < (self.lvlUpCost * self.hero!.lvlCounter) {
-            self.lvlUpButton.isHidden = true
-        } else {
-            self.lvlUpButton.isHidden = false
-        }
     }
 
     @IBAction func levelUp(_ sender: Any) {
-        if self.hero!.gold >= (self.lvlUpCost * self.hero!.lvlCounter) {
-            self.hero!.gold -= self.lvlUpCost * self.hero!.lvlCounter
+        if self.hero!.gold.value >= (self.lvlUpCost * self.hero!.lvlCounter) {
+            self.hero!.gold.receive(self.hero!.gold.value - (self.lvlUpCost * self.hero!.lvlCounter))
             self.hero!.lvlUp()
             self.configLabels()
         }
     }
     
     @IBAction func plusGold(_ sender: Any) {
-        self.hero!.gold += 100
+        self.hero!.gold.receive(self.hero!.gold.value + 100)
         self.configLabels()
     }
     

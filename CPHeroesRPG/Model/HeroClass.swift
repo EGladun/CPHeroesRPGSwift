@@ -23,7 +23,7 @@ class Hero {
     var crit = 3
     var minDmg = 1
     var maxDmg = 5
-    var gold = 0
+    var gold = Observable<Int>(0)
     var lvlCounter = 1
     //Base init
     init(name: String, heroClass: String, lastId: Int) {
@@ -55,7 +55,7 @@ class Hero {
         self.crit = hero.crit
         self.minDmg = hero.minDmg
         self.maxDmg = hero.maxDmg
-        self.gold = hero.gold
+        self.gold.receive(hero.gold)
         self.lvlCounter = hero.lvlCounter
         
     }
