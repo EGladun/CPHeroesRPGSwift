@@ -57,7 +57,8 @@ class BattleViewController: UIViewController {
         }
         
         let percent = winPercent(hero: self.hero!, enemy: self.enemies.first!)
-        self.percentLabel.text = "Win: \(percent)%"
+        self.percentLabel.text = "Your chance of winning is \(percent)%"
+        
     }
 
     @IBAction func concede(_ sender: Any) {

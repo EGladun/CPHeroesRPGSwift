@@ -36,9 +36,16 @@ class HeroScreenViewController: UIViewController {
         self.configLabels()
         self.configObserves()
         self.createEnemies()
-        //self.navigationItem.setHidesBackButton(true, animated: true)
-        self.heroes = realm.objects(HeroModel.self)
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.heroes = realm.objects(HeroModel.self)
+        for hero in heroes {
+            if hero.id == self.hero!.id {
+                self.hero = Hero(hero: hero)
+            }
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {

@@ -16,19 +16,25 @@ func winPercent(hero: Hero, enemy: Enemy) -> Double{
     let enemyDefence = enemy.maxHP * (1 + (enemy.dodge / 100)) * (1 + (enemy.protection / 100))
     
     let heroKillCoef: Double = Double(enemyDefence) / Double(heroPower)
-    print(heroKillCoef)
+    print("kill:", heroKillCoef, " turns")
     let heroDeathCoef: Double = Double(heroDefence) / Double(enemyPower)
-    print(heroDeathCoef)
+    print("Death:",heroDeathCoef, " turns")
     
-    var percent: Double = (heroDeathCoef / heroKillCoef) * 100
-    if percent > 100 {
-        percent = 100
-    }
+    let onePercent = (heroKillCoef + heroDeathCoef) / 100
+    let percent = heroDeathCoef / onePercent
     print(percent)
     
-    return percent
+    return percent.rounded(toPlaces: 2)
 }
 
 func battle(percent: Double){
     
+}
+
+extension Double {
+    /// Rounds the double to decimal places value
+    func rounded(toPlaces places:Int) -> Double {
+        let divisor = pow(10.0, Double(places))
+        return (self * divisor).rounded() / divisor
+    }
 }
