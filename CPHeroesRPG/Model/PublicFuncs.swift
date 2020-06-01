@@ -27,8 +27,9 @@ func winPercent(hero: Hero, enemy: Enemy) -> Double{
     return percent.rounded(toPlaces: 2)
 }
 
-func battle(percent: Double){
-    
+func battle(percent: Double) -> Bool{
+    let win = Double.random(in: 0.00...100.0)
+    return win <= percent
 }
 
 extension Double {
