@@ -27,9 +27,17 @@ func winPercent(hero: Hero, enemy: Enemy) -> Double{
     return percent.rounded(toPlaces: 2)
 }
 
-func battle(percent: Double) -> Bool{
+func battle(percent: Double) -> Int{
     let win = Double.random(in: 0.00...100.0)
-    return win <= percent
+    
+    if win <= percent {
+        let gold = Int(5 + 10 * ((100 - percent) / 100))
+        print("gold \(gold)")
+        return gold
+    } else {
+        print("death")
+        return 0
+    }
 }
 
 extension Double {

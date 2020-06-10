@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BattleViewController" customModule="CPHeroesRPG" customModuleProvider="target">
             <connections>
+                <outlet property="battleButton" destination="MLN-Wy-one" id="efv-pg-oEU"/>
                 <outlet property="concedeButton" destination="p7O-dR-mfY" id="Fwc-1g-EnU"/>
                 <outlet property="enemyView" destination="ciQ-x9-OG8" id="HO4-Kp-7qP"/>
                 <outlet property="heroPortrait" destination="7T8-7h-TkW" id="tj6-gJ-LPM"/>
@@ -41,6 +42,13 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MLN-Wy-one">
+                    <rect key="frame" x="175.66666666666666" y="420.33333333333331" width="63" height="42"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                    <state key="normal" title="Battle">
+                        <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -54,7 +62,9 @@
                 <constraint firstItem="ciQ-x9-OG8" firstAttribute="width" secondItem="7T8-7h-TkW" secondAttribute="width" id="dlw-BU-xyf"/>
                 <constraint firstItem="ciQ-x9-OG8" firstAttribute="leading" secondItem="7T8-7h-TkW" secondAttribute="trailing" id="iTe-vl-4ko"/>
                 <constraint firstItem="7T8-7h-TkW" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="jRf-M0-5c5"/>
+                <constraint firstItem="MLN-Wy-one" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="kc8-BB-YrX"/>
                 <constraint firstItem="ciQ-x9-OG8" firstAttribute="width" secondItem="7T8-7h-TkW" secondAttribute="height" multiplier="89:64" id="tPR-1x-kK7"/>
+                <constraint firstItem="MLN-Wy-one" firstAttribute="top" secondItem="CeI-dl-yuT" secondAttribute="bottom" constant="32" id="vtb-iP-53g"/>
                 <constraint firstItem="CeI-dl-yuT" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="wiM-P9-gnD"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

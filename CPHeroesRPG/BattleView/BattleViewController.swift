@@ -15,10 +15,13 @@ class BattleViewController: UIViewController {
     @IBOutlet var enemyView: UIImageView!
     @IBOutlet var percentLabel: UILabel!
     @IBOutlet weak var concedeButton: UIButton!
+    @IBOutlet weak var battleButton: UIButton!
     
     var enemies: [Enemy] = []
     var boss: ArchEnemy = ArchEnemy(heroLevel: 1)
     var hero: Hero?
+    var takenGold: Int?
+    var goldBag: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +56,16 @@ class BattleViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
+        
+        self.battleButton.reactive.tap.observeNext { (tap) in
+            guard let gold = self.takenGold else { return }
+            if gold > 0 {
+                print("You win")
+                self.goldBag += gold
+            } else {
+                print("You loose")
+            }
+        }
     }
     
     func updateEnemy(){
@@ -70,11 +83,7 @@ class BattleViewController: UIViewController {
         let percent = winPercent(hero: self.hero!, enemy: self.enemies.first!)
         self.percentLabel.text = "Your chance of winning is \(percent)%"
         
-        if battle(percent: percent){
-            print("Win")
-        } else {
-            print("Lose")
-        }
+        self.takenGold = battle(percent: percent)
         
     }
     
