@@ -19,7 +19,7 @@ class HeroesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Choose your hero"
+        self.title = "Heroes list"
     }
     
     override func viewWillAppear(_ animated: Bool) {
