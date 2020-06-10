@@ -23,6 +23,7 @@ class HeroScreenViewController: UIViewController {
     @IBOutlet var heroPortrait: UIImageView!
     @IBOutlet var goldLabel: UILabel!
     @IBOutlet var lvlUpButton: UIButton!
+    @IBOutlet weak var costLabel: UILabel!
     
     var hero: Hero?
     let lvlUpCost = 10
@@ -34,9 +35,8 @@ class HeroScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configLabels()
-        self.configObserves()
         self.createEnemies()
-        
+        self.lvlUpButton.isHidden = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -46,6 +46,7 @@ class HeroScreenViewController: UIViewController {
                 self.hero = Hero(hero: hero)
             }
         }
+        self.configObserves()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -109,6 +110,7 @@ class HeroScreenViewController: UIViewController {
         self.critLabel.text = "Crit: " + String(self.hero!.crit) + "%"
         self.damageLabel.text = "Damage: " + String(self.hero!.minDmg) + " - " + String(self.hero!.maxDmg)
         self.goldLabel.text = "Gold: " + String(self.hero!.gold.value)
+        self.costLabel.text = String(self.lvlUpCost * self.hero!.lvlCounter)
         switch self.hero!.heroClass {
         case "crusader":
             self.heroPortrait.image = UIImage(named: "crusader")

@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="accurancyLabel" destination="3Vv-JN-5Et" id="aQt-mH-LMw"/>
                 <outlet property="classLabel" destination="Nvw-re-Nog" id="CzI-zW-Ie8"/>
+                <outlet property="costLabel" destination="37k-Vc-tgI" id="oTb-vc-PVa"/>
                 <outlet property="critLabel" destination="kMQ-Yi-XPm" id="Yb7-GA-wvj"/>
                 <outlet property="damageLabel" destination="P8P-0m-POX" id="AXv-o8-ZX0"/>
                 <outlet property="dodgeLabel" destination="nYd-Mg-mTY" id="zGu-nM-E1L"/>
@@ -134,6 +135,12 @@
                         <action selector="toBattle:" destination="-1" eventType="touchUpInside" id="geD-cZ-0qK"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="37k-Vc-tgI">
+                    <rect key="frame" x="232" y="352" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -146,12 +153,14 @@
                 <constraint firstItem="dgp-tW-xYq" firstAttribute="bottom" secondItem="yza-8N-Lnv" secondAttribute="bottom" id="IJS-hu-fgX"/>
                 <constraint firstItem="1EI-u9-gtC" firstAttribute="leading" secondItem="yza-8N-Lnv" secondAttribute="trailing" constant="8" id="JUD-eL-4nc"/>
                 <constraint firstItem="1EI-u9-gtC" firstAttribute="top" secondItem="P8P-0m-POX" secondAttribute="bottom" constant="7.5" id="Jgm-gF-SEj"/>
+                <constraint firstItem="37k-Vc-tgI" firstAttribute="leading" secondItem="yza-8N-Lnv" secondAttribute="trailing" constant="8" id="M2v-QX-UAI"/>
                 <constraint firstItem="Nvw-re-Nog" firstAttribute="leading" secondItem="yza-8N-Lnv" secondAttribute="trailing" constant="8" id="QHk-Ja-2qq"/>
                 <constraint firstItem="dgp-tW-xYq" firstAttribute="centerX" secondItem="Nvw-re-Nog" secondAttribute="centerX" id="RN9-Un-MnX"/>
                 <constraint firstItem="0tw-LY-vPQ" firstAttribute="top" secondItem="3Vv-JN-5Et" secondAttribute="bottom" constant="8" id="UCi-hY-EMk"/>
                 <constraint firstItem="kMQ-Yi-XPm" firstAttribute="top" secondItem="ifO-0N-YLv" secondAttribute="bottom" constant="8" id="Y0f-4F-RXS"/>
                 <constraint firstItem="nYd-Mg-mTY" firstAttribute="leading" secondItem="yza-8N-Lnv" secondAttribute="trailing" constant="8" id="Y9j-81-dfc"/>
                 <constraint firstItem="0tw-LY-vPQ" firstAttribute="leading" secondItem="yza-8N-Lnv" secondAttribute="trailing" constant="8" id="ZOr-fg-foU"/>
+                <constraint firstItem="37k-Vc-tgI" firstAttribute="top" secondItem="1EI-u9-gtC" secondAttribute="bottom" constant="8" id="ZWx-Kc-8Xi"/>
                 <constraint firstItem="ifO-0N-YLv" firstAttribute="top" secondItem="0tw-LY-vPQ" secondAttribute="bottom" constant="8" id="ZfD-Pj-g9j"/>
                 <constraint firstItem="x0A-I3-r05" firstAttribute="top" secondItem="dgp-tW-xYq" secondAttribute="bottom" constant="12" id="fdx-Mj-qmo"/>
                 <constraint firstItem="yza-8N-Lnv" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="g9K-uB-CKV"/>
