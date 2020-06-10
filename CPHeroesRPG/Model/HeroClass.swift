@@ -60,7 +60,7 @@ class Hero {
         
     }
     
-    func lvlUp() {
+    func lvlUp(lvlUpCost: Int) {
         self.maxHP += 5
         self.protection += 5
         self.minDmg += 3
@@ -85,6 +85,7 @@ class Hero {
         }
         
         self.lvlCounter += 1
+        self.gold.receive(self.gold.value - (lvlUpCost * (self.lvlCounter - 1)))
     }
     
     

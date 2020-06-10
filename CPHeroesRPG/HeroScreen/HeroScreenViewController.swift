@@ -125,8 +125,7 @@ class HeroScreenViewController: UIViewController {
 
     @IBAction func levelUp(_ sender: Any) {
         if self.hero!.gold.value >= (self.lvlUpCost * self.hero!.lvlCounter) {
-            self.hero!.gold.receive(self.hero!.gold.value - (self.lvlUpCost * self.hero!.lvlCounter))
-            self.hero!.lvlUp()
+            self.hero!.lvlUp(lvlUpCost: self.lvlUpCost)
             self.configLabels()
         }
     }
