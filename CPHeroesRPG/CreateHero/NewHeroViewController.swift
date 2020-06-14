@@ -39,8 +39,10 @@ class NewHeroViewController: UIViewController {
         
         self.nameField.reactive.text.observeNext { (name) in
             if name!.count > 0 {
+                self.saveHeroBtn.backgroundColor = .darkGray
                 self.saveHeroBtn.isEnabled = true
             } else {
+                self.saveHeroBtn.backgroundColor = .lightGray
                 self.saveHeroBtn.isEnabled = false
             }
         }

@@ -8,6 +8,8 @@
 
 import UIKit
 import Bond
+import Realm
+import RealmSwift
 
 class BattleViewController: UIViewController {
     
@@ -22,11 +24,15 @@ class BattleViewController: UIViewController {
     var hero: Hero?
     var takenGold: Int?
     var goldBag: Int = 0
+    let realm = try! Realm()
+    var heroes: Results<HeroModel>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configScreen()
         self.configObservers()
+        self.createEnemies()
+        self.updateEnemy()
     }
     
     func configScreen(){
@@ -44,8 +50,7 @@ class BattleViewController: UIViewController {
         default:
             print("error")
         }
-        
-        self.updateEnemy()
+        self.heroes = realm.objects(HeroModel.self)
         
     }
     
@@ -60,12 +65,24 @@ class BattleViewController: UIViewController {
         self.battleButton.reactive.tap.observeNext { (tap) in
             guard let gold = self.takenGold else { return }
             if gold > 0 {
-                print("You win")
                 self.goldBag += gold
+                let alert = UIAlertController(title: "You won", message: "+\(gold) gold for you", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Yay", style: .default, handler: self.win(alert:)))
+                self.present(alert, animated: true, completion: nil)
             } else {
-                print("You loose")
+                let alert = UIAlertController(title: "You loose", message: "Omae wa mou shindeiru", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Nani?", style: .default, handler: self.death(alert:)))
+                self.present(alert, animated: true, completion: nil)
             }
         }
+    }
+    
+    func createEnemies(){
+        for _ in 1...9 {
+            let newEnemy = Enemy(heroLevel: self.hero!.lvlCounter)
+            self.enemies.append(newEnemy)
+        }
+        self.boss = ArchEnemy(heroLevel: self.hero!.lvlCounter)
     }
     
     func updateEnemy(){
@@ -87,8 +104,25 @@ class BattleViewController: UIViewController {
         
     }
     
+    func win(alert: UIAlertAction!){
+        self.enemies.removeFirst()
+        self.updateEnemy()
+    }
+    
     func goBack(alert: UIAlertAction!){
+        self.hero!.gold.receive(self.hero!.gold.value + self.goldBag)
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    func death(alert: UIAlertAction!){
+        try! realm.write {
+            for hero in self.heroes{
+                if hero.id == self.hero!.id{
+                    realm.delete(hero)
+                }
+            }
+        }
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
 }

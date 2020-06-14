@@ -160,8 +160,8 @@
 			children = (
 				FA8204B8242DF3F500811F69 /* AppDelegate.swift */,
 				FA8204CC242DF47500811F69 /* Model */,
-				FA786BD02440570400B8B5CD /* Heroes list */,
 				FA786BCF244056EE00B8B5CD /* main menu */,
+				FA786BD02440570400B8B5CD /* Heroes list */,
 				FA786BD22440573F00B8B5CD /* CreateHero */,
 				FA4E40A824407CC500B398D1 /* HeroScreen */,
 				FAFB28E2244C868400CCD0E2 /* BattleView */,

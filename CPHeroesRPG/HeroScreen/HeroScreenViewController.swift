@@ -35,8 +35,12 @@ class HeroScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configLabels()
-        self.createEnemies()
         self.lvlUpButton.isHidden = true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.configLabels()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -61,14 +65,6 @@ class HeroScreenViewController: UIViewController {
                 self.lvlUpButton.isHidden = false
             }
         }
-    }
-    
-    func createEnemies(){
-        for _ in 1...9 {
-            let newEnemy = Enemy(heroLevel: self.hero!.lvlCounter)
-            self.enemyArray.append(newEnemy)
-        }
-        boss = ArchEnemy(heroLevel: self.hero!.lvlCounter)
     }
     
     func saveToRealm(){
@@ -137,8 +133,6 @@ class HeroScreenViewController: UIViewController {
     
     @IBAction func toBattle(_ sender: Any) {
         let nextVC = BattleViewController()
-        nextVC.enemies = self.enemyArray
-        nextVC.boss = self.boss
         nextVC.hero = self.hero
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
