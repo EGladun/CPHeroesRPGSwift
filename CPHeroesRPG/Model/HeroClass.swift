@@ -90,5 +90,41 @@ class Hero {
         self.gold.receive(self.gold.value - (lvlUpCost * (self.lvlCounter - 1)))
     }
     
-    
+    func sendToServer(){
+        guard let url = URL(string: "http://localhost:8000/heroes/") else {return}
+        
+        let parameters = ["name": self.name,
+                          "heroClass": self.heroClass,
+                          "dodge": self.dodge,
+                          "maxHP": self.maxHP,
+                          "accurancy": self.accurancy,
+                          "protection": self.protection,
+                          "speed": self.speed,
+                          "crit": self.crit,
+                          "minDmg": self.minDmg,
+                          "maxDmg": self.maxDmg,
+                          "gold": self.gold.value,
+                          "lvlCounter": self.lvlCounter] as [String : Any]
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        guard let httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else {return}
+        request.httpBody = httpBody
+        let session = URLSession.shared
+        session.dataTask(with: request){ (data, response, error) in
+            if let response = response{
+                print(response)
+            }
+            
+            guard let data = data else {return}
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: [])
+                print(json)
+            } catch {
+                print(error)
+            }
+        }.resume()
+    }
 }
