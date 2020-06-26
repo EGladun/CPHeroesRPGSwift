@@ -11,6 +11,8 @@ import Bond
 
 class Hero {
     
+    static var lastId: Int = 0
+    
     var name = ""
     var heroClass: String = "crusader"
     var id: Int
@@ -26,8 +28,8 @@ class Hero {
     var gold = Observable<Int>(0)
     var lvlCounter = 1
     //Base init
-    init(name: String, heroClass: String, lastId: Int) {
-        self.id = lastId
+    init(name: String, heroClass: String) {
+        self.id = Hero.lastId
         self.name = name
         self.heroClass = heroClass
         switch heroClass {
