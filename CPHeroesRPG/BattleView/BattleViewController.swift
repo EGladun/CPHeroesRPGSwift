@@ -111,6 +111,7 @@ class BattleViewController: UIViewController {
     
     func goBack(alert: UIAlertAction!){
         self.hero!.gold.receive(self.hero!.gold.value + self.goldBag)
+        self.saveToRealm()
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -123,6 +124,33 @@ class BattleViewController: UIViewController {
             }
         }
         self.navigationController?.popToRootViewController(animated: true)
+    }
+    
+    func saveToRealm(){
+        let currentHero = HeroModel()
+        currentHero.id = self.hero!.id
+        currentHero.name = self.hero!.name
+        currentHero.heroClass = self.hero!.heroClass
+        currentHero.maxHP = self.hero!.maxHP
+        currentHero.dodge = self.hero!.dodge
+        currentHero.accurancy = self.hero!.accurancy
+        currentHero.protection = self.hero!.protection
+        currentHero.speed = self.hero!.speed
+        currentHero.crit = self.hero!.crit
+        currentHero.minDmg = self.hero!.minDmg
+        currentHero.maxDmg = self.hero!.maxDmg
+        currentHero.maxHP = self.hero!.maxHP
+        currentHero.gold = self.hero!.gold.value
+        currentHero.lvlCounter = self.hero!.lvlCounter
+        
+        try! realm.write {
+            for hero in heroes{
+                if hero.id == currentHero.id{
+                    realm.delete(hero)
+                    realm.add(currentHero)
+                }
+            }
+        }
     }
     
 }
